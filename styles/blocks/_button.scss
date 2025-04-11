@@ -1,0 +1,13 @@
+@use '../helpers' as *;
+
+.button {
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        transform: scale(1.2);
+        transition: var(--transition-duration);
+    }
+
+}

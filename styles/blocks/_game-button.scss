@@ -1,0 +1,11 @@
+@use '../helpers' as *;
+
+.game-button {
+    position: fixed;
+    bottom: #{rem(25)};
+    right: #{rem(25)};
+    background: transparent;
+    border: none;
+    width: fluid(120, 50);
+    z-index: 2;
+}

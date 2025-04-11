@@ -1,0 +1,234 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+:where(ul[class]) {
+  list-style: none;
+}
+
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --color-red: #b81414;
+  --color-dark: #191A23;
+  --color-grey-road: #817f85;
+  --color-green:#6c7b2a;
+  --border: 1px solid var(--color-dark);
+  --font-family-base: "WinkySans", sans-serif;
+  --container-width: 1920px;
+  --border: 0.125rem solid var(--color-dark);
+  --transition-duration: 0.5s;
+}
+
+@font-face {
+  font-family: "WinkySans";
+  src: url("../fonts/winky-sans-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  background-color: var(--color-green);
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  max-height: 100vh;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.car__blue {
+  width: clamp(3.75rem, 2.7941176471rem + 3.9215686275vw, 7.5rem);
+  position: absolute;
+  transform: translateY(-25vh);
+  left: 49vw;
+}
+
+.tree {
+  position: absolute;
+}
+.tree-1, .tree-5 {
+  width: clamp(14.375rem, 11.8259803922rem + 10.4575163399vw, 24.375rem);
+}
+.tree-2, .tree-4 {
+  width: clamp(13.75rem, 11.5196078431rem + 9.1503267974vw, 22.5rem);
+}
+.tree-3, .tree-6 {
+  width: clamp(15.625rem, 13.3946078431rem + 9.1503267974vw, 24.375rem);
+}
+.tree-1 {
+  transform: translateY(-15vh);
+  left: 71vw;
+  z-index: 1;
+}
+.tree-2 {
+  transform: translateY(-150vh);
+  left: 8vw;
+  z-index: 1;
+}
+.tree-3 {
+  transform: translateY(-45vh);
+  left: 7vw;
+  z-index: 1;
+}
+.tree-4 {
+  transform: translateY(-70vh);
+  left: 75vw;
+  z-index: 1;
+}
+.tree-5 {
+  transform: translateY(-100vh);
+  left: 7vw;
+}
+.tree-6 {
+  transform: translateY(-125vh);
+  left: 72vw;
+}
+
+.road {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  width: clamp(12.5rem, -1.8382352941rem + 58.8235294118vw, 68.75rem);
+  max-width: 59.375rem;
+  height: 100vh;
+  background-color: var(--color-grey-road);
+  border-left: var(--border);
+  border-right: var(--border);
+}
+
+.button:focus {
+  outline: none;
+}
+.button:hover {
+  transform: scale(1.2);
+  transition: var(--transition-duration);
+}
+
+.game-button {
+  position: fixed;
+  bottom: 1.5625rem;
+  right: 1.5625rem;
+  background: transparent;
+  border: none;
+  width: clamp(3.125rem, 2.0098039216rem + 4.5751633987vw, 7.5rem);
+  z-index: 2;
+}
+
+.sign {
+  position: absolute;
+}
+.sign__arrow {
+  width: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
+}
+.sign__danger {
+  width: clamp(5rem, 4.362745098rem + 2.614379085vw, 7.5rem);
+}
+.sign__coin {
+  width: clamp(1.875rem, 1.556372549rem + 1.3071895425vw, 3.125rem);
+}/*# sourceMappingURL=styles.css.map */

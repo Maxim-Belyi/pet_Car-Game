@@ -1,0 +1,13 @@
+@use '../helpers' as *;
+
+.road {
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    width: fluid(1100, 200);
+    max-width: #{rem(950)};
+    height: 100vh;
+    background-color: var(--color-grey-road);
+    border-left: var(--border);
+    border-right: var(--border);
+}

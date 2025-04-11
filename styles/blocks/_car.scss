@@ -1,0 +1,10 @@
+@use '../helpers' as *;
+
+.car {
+    &__blue {
+        width: fluid(120, 60);
+        position: absolute;
+        transform: translateY(-25vh);
+        left: 49vw;
+    }
+}

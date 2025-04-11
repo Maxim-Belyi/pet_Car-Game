@@ -1,0 +1,17 @@
+@use '../helpers' as *;
+
+.sign {
+    position: absolute;
+
+    &__arrow {
+        width: fluid(60, 40);
+    }
+
+    &__danger {
+        width: fluid(120, 80);
+    }
+
+    &__coin {
+        width: fluid(50, 30);
+    }
+}
