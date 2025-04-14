@@ -103,9 +103,11 @@ svg * {
   --color-dark: #191A23;
   --color-grey-road: #817f85;
   --color-green:#6c7b2a;
+  --color-orange: #F24E1E;
   --border: 1px solid var(--color-dark);
   --font-family-base: "WinkySans", sans-serif;
   --container-width: 1920px;
+  --border-radius: 20px;
   --border: 0.125rem solid var(--color-dark);
   --transition-duration: 0.5s;
 }
@@ -147,10 +149,12 @@ body {
   position: absolute;
   transform: translateY(-25vh);
   left: 49vw;
+  border: 1px solid red;
 }
 
 .tree {
   position: absolute;
+  z-index: 1;
 }
 .tree-1, .tree-5 {
   width: clamp(14.375rem, 11.8259803922rem + 10.4575163399vw, 24.375rem);
@@ -164,22 +168,18 @@ body {
 .tree-1 {
   transform: translateY(-15vh);
   left: 71vw;
-  z-index: 1;
 }
 .tree-2 {
   transform: translateY(-150vh);
   left: 8vw;
-  z-index: 1;
 }
 .tree-3 {
   transform: translateY(-45vh);
   left: 7vw;
-  z-index: 1;
 }
 .tree-4 {
   transform: translateY(-70vh);
   left: 75vw;
-  z-index: 1;
 }
 .tree-5 {
   transform: translateY(-100vh);
@@ -220,15 +220,48 @@ body {
   z-index: 2;
 }
 
-.sign {
+.signs {
   position: absolute;
 }
-.sign__arrow {
-  width: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
-}
-.sign__danger {
+.signs__arrow {
   width: clamp(5rem, 4.362745098rem + 2.614379085vw, 7.5rem);
+  left: 50vw;
+  transform: translateY(-195vh);
 }
-.sign__coin {
-  width: clamp(1.875rem, 1.556372549rem + 1.3071895425vw, 3.125rem);
+.signs__danger {
+  width: clamp(11.25rem, 10.2941176471rem + 3.9215686275vw, 15rem);
+  left: 60vw;
+  transform: translateY(-290vh);
+}
+.signs__coin {
+  width: clamp(2.5rem, 2.0220588235rem + 1.9607843137vw, 4.375rem);
+  left: 50vw;
+  transform: translateY(-110vh);
+  border: 1px solid blue;
+}
+.signs__coin-alt {
+  width: clamp(2.5rem, 2.0220588235rem + 1.9607843137vw, 4.375rem);
+  left: 40vw;
+  transform: translateY(-130vh);
+}
+
+.game-score {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 10rem;
+  height: 5rem;
+  top: 10px;
+  left: 10px;
+  padding-inline: 10px;
+  background-color: var(--color-orange);
+  font-size: 22px;
+  font-weight: 500;
+  font-family: var(--font-family-base);
+  border-radius: var(--border-radius);
+  z-index: 5;
+}
+.game-score__title {
+  padding-right: 5px;
 }/*# sourceMappingURL=styles.css.map */

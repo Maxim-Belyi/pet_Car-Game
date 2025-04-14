@@ -1,0 +1,30 @@
+@use '../helpers' as *;
+
+.signs {
+    position: absolute;
+
+    &__arrow {
+        width: fluid(120, 80);
+        left: 50vw;
+        transform: translateY(-195vh);
+    }
+
+    &__danger {
+        width: fluid(240, 180);
+        left: 60vw;
+        transform: translateY(-290vh);
+    }
+
+    &__coin {
+        width: fluid(70, 40);
+        left: 50vw;
+        transform: translateY(-110vh);
+        border: 1px solid blue;
+    }
+
+    &__coin-alt {
+        width: fluid(70, 40);
+        left: 40vw;
+        transform: translateY(-130vh);
+    }
+}
