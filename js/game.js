@@ -4,7 +4,7 @@
 
   let score = 0;
   let blueCarMoveSpeed = 5;
-  let treesMoveSpeed = 5;
+  let treesMoveSpeed = 6;
   let signsMoveSpeed = 4;
 
   const trees = document.querySelectorAll(".tree");
@@ -233,11 +233,33 @@
       elementAnimation(arrow, arrowInfo, negativeRandom500);
       elementAnimation(danger, dangerInfo, negativeRandom900);
 
+      if (coinAltInfo.visible && hasCollision(blueCarInfo, coinAltInfo)) {
+        score++;
+         gameScore.innerText = score;
+         coinAlt.style.display = 'none';
+         coinAltInfo.visible = false;
+
+         if (score % 3 === 0) {
+          blueCarMoveSpeed++;
+          signsMoveSpeed++;
+          treesMoveSpeed++;
+         }
+      }
+
       if (coinInfo.visible && hasCollision(blueCarInfo, coinInfo)) {
          score++;
          gameScore.innerText = score;
          coin.style.display = 'none';
          coinInfo.visible = false;
+
+         if (score % 3 === 0) {
+          blueCarMoveSpeed++;
+          signsMoveSpeed++;
+          treesMoveSpeed++;
+         }
+
+         console.log('Скорость машины:', blueCarMoveSpeed)
+         console.log('Скорость элементов:', signsMoveSpeed)
       };
 
       animationId = requestAnimationFrame(startGame);
