@@ -2,7 +2,7 @@ export const CoinSound = {
     sounds: {},
   
     init() {
-      this.sounds.coin = new Audio('../sounds/coin.wav');
+      this.sounds.coin = new Audio('../sounds/coin.mp3');
       this.sounds.coin.volume = 0.4;
     },
   
@@ -37,7 +37,7 @@ export const MusicManager = {
     onChange: null,
   
     init() {
-      this.audio = new Audio('../sounds/background-music.wav');
+      this.audio = new Audio('../sounds/background-music.mp3');
       this.audio.volume = 0.3; 
       this.audio.loop = true; 
     },
