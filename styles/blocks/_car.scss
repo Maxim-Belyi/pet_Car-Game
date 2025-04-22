@@ -4,8 +4,6 @@
     &__blue {
         width: fluid(120, 60);
         position: absolute;
-        transform: translateY(-25vh);
-        left: 49vw;
-        border: 1px solid red;
-    }
+        transform: translate(28rem, -25vh);
+        }
 }

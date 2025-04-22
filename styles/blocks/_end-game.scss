@@ -1,0 +1,51 @@
+@use '../helpers' as *;
+
+.end-game {
+    display: none;
+    z-index: 10;
+  
+
+    &__wrapper {
+
+        display: flex;
+        gap: #{rem(30)};
+        flex-direction: column;
+        padding: #{rem(30)} #{rem(40)};
+        background-color: var(--color-white);
+        border-radius: var(--border-radius);
+    }
+
+    &__text {
+        display: flex;
+        font-size: #{rem(26)};
+        letter-spacing: 1px;
+
+        &::after,
+        &::before {
+            content: '\1f60e';
+            display: block;
+            padding-inline: #{rem(20)};
+            animation: jump 0.3s ease infinite alternate;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes jump {
+            from {
+              transform: translateY(0);
+            }
+            to {
+              transform: translateY(-15px); 
+            }
+          }
+    }
+
+    &__button {
+        text-transform: uppercase;
+        font-size: #{rem(22)};
+        border-radius: var(--border-radius);
+        color: var(--color-white);
+        background-color: var(--color-purple);
+        letter-spacing: 2.5px;
+    }
+
+}

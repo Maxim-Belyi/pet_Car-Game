@@ -1,0 +1,9 @@
+function createElementInfo(element) {
+    return {
+      width: element.clientWidth,
+      height: element.clientHeight,
+      coords: getCoords(element),
+      visible: true,
+    };
+  }
+

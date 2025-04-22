@@ -5,14 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link href="./sounds/coin.wav" as="audio">
+    <link href="./sounds/background-music.wav" as="audio">
     <title>Car game</title>
 </head>
 
 <body>
     <div class="container">
-
-        <div class="road"></div>
-
+        <div class="road">
+            <div class="backdrop end-game">
+                <div class="end-game__wrapper">
+                    <div class="end-game__text">
+                        <p>Total score: <span class="end-game__score">0</span></p>
+                    </div>
+                    <button class="button end-game__button" type="button">Restart</button>
+                </div>
+            </div>
+        </div>
         <div class="car car__blue">
             <img src="./images/car.png" alt="">
         </div>
@@ -41,12 +50,11 @@
             <img src="./images/tree3.png" alt="">
         </div>
 
-
         <div class="signs signs__arrow arrow">
             <img src="./images/arrow.png" alt="">
         </div>
 
-        <div class="signs signs__danger  danger">
+        <div class="signs signs__danger danger">
             <img src="./images/danger.png" alt="">
         </div>
 
@@ -66,13 +74,19 @@
         <button class="button game-button" type="button">
             <img class="game-button__pause" src="./images/pause.png" alt="">
             <img class="start-button__play visually-hidden" src="./images/play.png" alt="">
-
         </button>
 
+        <button class="background-sound__btn">
+            <span class="background__sound-on">🔊</span>
+            <span class="background__sound-off visually-hidden">🔇</span>
+        </button>
     </div>
-
-    <script src="js/game.js"></script>
-    <script src="js/main.js"></script>
 </body>
+
+<script src="js/utils/create-element-info.js"></script>
+<script src="js/utils/get-coords.js"></script>
+<script src="js/utils/has-collision.js"></script>
+<script type="module" src="js/game.js"></script>
+
 
 </html>

@@ -5,26 +5,22 @@
 
     &__arrow {
         width: fluid(120, 80);
-        left: 50vw;
-        transform: translateY(-195vh);
+        transform: translate(250px, -195vh);
     }
 
     &__danger {
-        width: fluid(240, 180);
-        left: 60vw;
-        transform: translateY(-290vh);
+        width: fluid(160, 120);
+        transform: translate(200px, -290vh);
     }
 
     &__coin {
         width: fluid(70, 40);
-        left: 50vw;
-        transform: translateY(-110vh);
-        border: 1px solid blue;
+        transform: translate(200px, -110vh);
     }
 
     &__coin-alt {
         width: fluid(70, 40);
         left: 40vw;
-        transform: translateY(-130vh);
+        transform: translate(300px, -130vh);
     }
 }

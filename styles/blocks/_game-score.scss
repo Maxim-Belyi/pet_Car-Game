@@ -5,19 +5,21 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    width: #{rem(160)};
-    height: #{rem(80)};
     top: 10px;
     left: 10px;
-    padding-inline: 10px;
+    
     background-color: var(--color-orange);
     font-size: 22px;
     font-weight: 500;
-    font-family: var(--font-family-base);
     border-radius: var(--border-radius);
     z-index: 5;
 
     &__title {
-        padding-right: 5px;
+        padding: #{rem(10)};
+        padding-left: #{rem(20)};
+    }
+
+    &__value {
+        padding-right: #{rem(20)};
     }
 }
