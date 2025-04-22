@@ -11,9 +11,6 @@ import { MusicManager } from "./sound.js";
   let treesMoveSpeed = 7;
   let signsMoveSpeed = 5;
 
-  // const backgroundAudio = new Audio("../sounds/background-music.wav");
-
-
   const trees = document.querySelectorAll(".tree");
   const road = document.querySelector(".road");
 
@@ -30,6 +27,9 @@ import { MusicManager } from "./sound.js";
     },
   };
 
+  const coinAlt = document.querySelector(".coin-alt");
+  const coinAltInfo = createElementInfo(coinAlt);
+   
   const coin = document.querySelector(".coin");
   const coinInfo = createElementInfo(coin);
 
@@ -226,6 +226,7 @@ import { MusicManager } from "./sound.js";
       elementAnimation(coin, coinInfo, negativeRandom100);
       elementAnimation(arrow, arrowInfo, negativeRandom500);
       elementAnimation(danger, dangerInfo, negativeRandom900);
+      elementAnimation(coinAlt, coinAltInfo, negativeRandom500);
 
       if (dangerInfo.visible && hasCollision(blueCarInfo, dangerInfo)) {
         finishGame();
@@ -239,11 +240,19 @@ import { MusicManager } from "./sound.js";
         coinInfo.visible = false;
         CoinSound.play("coin");
 
-        if (score % 4 === 0) {
+        if (score % 3 === 0) {
           blueCarMoveSpeed++;
           signsMoveSpeed++;
           treesMoveSpeed++;
         }
+      }
+
+      if (coinAltInfo.visible && hasCollision(blueCarInfo, coinAltInfo)) {
+        score ++;
+        gameScoreValue.innerText = score;
+        coinAlt.style.display = "none";
+        coinAltInfo.visible = false;
+        CoinSound.play("coin");
       }
 
       if (arrowInfo.visible && hasCollision(blueCarInfo, arrowInfo)) {
@@ -253,16 +262,16 @@ import { MusicManager } from "./sound.js";
         dangerInfo.visible = false;
         ArrowSound.play("arrow");
 
-        blueCarMoveSpeed += 6;
-        treesMoveSpeed += 4;
-        signsMoveSpeed += 3;
+        blueCarMoveSpeed += 7;
+        treesMoveSpeed += 5;
+        signsMoveSpeed += 4;
 
         setTimeout(() => {
           coinInfo.visible = true;
           danger.style.opacity = 1;
-          blueCarMoveSpeed -= 6;
-          treesMoveSpeed -= 4;
-          signsMoveSpeed -= 3;
+          blueCarMoveSpeed -= 7;
+          treesMoveSpeed -= 5;
+          signsMoveSpeed -= 4;
 
           setTimeout(() => {
             dangerInfo.visible = true;
@@ -303,17 +312,10 @@ import { MusicManager } from "./sound.js";
 
   musicToggle.addEventListener("click", () => {
     MusicManager.toggle();
-      if (!MusicManager.isPlaying) {
-        musicToggle.children[0].classList.add("visually-hidden");
-        musicToggle.children[1].classList.remove("visually-hidden");
-      } else {
-        musicToggle.children[1].classList.add("visually-hidden");
-        musicToggle.children[0].classList.remove("visually-hidden");
-      }
-      console.log(musicToggle.children[1].classList)
-      
-    },
-  );
+
+    musicToggle.children[0].classList.toggle("visually-hidden");
+    musicToggle.children[1].classList.toggle("visually-hidden");
+  });
 
   restartButton.addEventListener("click", () => {
     window.location.reload();

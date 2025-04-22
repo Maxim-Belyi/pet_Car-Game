@@ -254,7 +254,6 @@ body {
 }
 .signs__coin-alt {
   width: clamp(2.5rem, 2.0220588235rem + 1.9607843137vw, 4.375rem);
-  left: 40vw;
   transform: translate(300px, -130vh);
 }
 

@@ -33,7 +33,7 @@ export const CoinSound = {
  
 export const MusicManager = {
     audio: null,
-    isPlaying: false,
+    isPlaying: null,
     onChange: null,
   
     init() {
@@ -53,7 +53,6 @@ export const MusicManager = {
     play() {
       this.audio.play()
         .then(() => this.isPlaying = true)
-        .catch(e => console.log("Автовоспроизведение заблокировано:", e));
     },
   
     pause() {
