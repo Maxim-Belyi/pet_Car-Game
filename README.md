@@ -4,4 +4,4 @@
 <br> 
 <h4 align="center">Web game Js/Scss only
 <br>
-<h3 align="center"><b>Arrow</b>keys or <b>WASD</b> control
+<h3 align="center"><b>Arrow</b> keys or <b>WASD</b> control
