@@ -1,9 +1,9 @@
-export const SoundManager = {
+export const CoinSound = {
     sounds: {},
   
     init() {
       this.sounds.coin = new Audio('../sounds/coin.wav');
-      this.sounds.coin.volume = 0.3;
+      this.sounds.coin.volume = 0.4;
     },
   
     play(name) {
@@ -12,17 +12,33 @@ export const SoundManager = {
       this.sounds[name].play();
     }
   };
-  
-  SoundManager.init();
+  CoinSound.init();
+
+  export const ArrowSound = {
+    sounds: {},
+
+    init() {
+      this.sounds.arrow = new Audio('../sounds/engine-force.mp3');
+      this.sounds.arrow.volume = 0.05;
+    },
+
+    play(name) {
+      if (!this.sounds[name]) return;
+      this.sounds[name].currentTime = 0;
+      this.sounds[name].play();
+    }
+  };
+  ArrowSound.init();
 
  
 export const MusicManager = {
     audio: null,
     isPlaying: false,
+    onChange: null,
   
     init() {
       this.audio = new Audio('../sounds/background-music.wav');
-      this.audio.volume = 0.2; 
+      this.audio.volume = 0.3; 
       this.audio.loop = true; 
     },
   
@@ -48,3 +64,6 @@ export const MusicManager = {
   };
   
   MusicManager.init();
+  document.addEventListener('click', () => {
+    MusicManager.play();
+  }, { once: true });

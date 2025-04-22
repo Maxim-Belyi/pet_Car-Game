@@ -1,11 +1,13 @@
 @use '../helpers' as *;
 .background-sound__btn {
     position: absolute;
-    width: #{rem(40)};
-    height: #{rem(40)};
-    top: 350px;
-    right: 75px;
+    width: #{rem(80)};
+    height: #{rem(80)};
+    bottom: #{rem(200)};
+    right: #{rem(45)};
     background: none;
     border: none;
     font-size: 36px;
+    z-index: 2;
+    outline: none;
 }

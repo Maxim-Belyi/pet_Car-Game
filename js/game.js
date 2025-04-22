@@ -1,4 +1,5 @@
-import { SoundManager } from "./sound.js";
+import { CoinSound } from "./sound.js";
+import { ArrowSound } from "./sound.js";
 import { MusicManager } from "./sound.js";
 
 (function () {
@@ -10,8 +11,8 @@ import { MusicManager } from "./sound.js";
   let treesMoveSpeed = 7;
   let signsMoveSpeed = 5;
 
-  const backgroundAudio = new Audio("../sounds/background-music.wav");
-  // const coinAudio = new Audio("../sounds/coin.wav");
+  // const backgroundAudio = new Audio("../sounds/background-music.wav");
+
 
   const trees = document.querySelectorAll(".tree");
   const road = document.querySelector(".road");
@@ -236,7 +237,7 @@ import { MusicManager } from "./sound.js";
         gameScoreValue.innerText = score;
         coin.style.display = "none";
         coinInfo.visible = false;
-        SoundManager.play("coin");
+        CoinSound.play("coin");
 
         if (score % 4 === 0) {
           blueCarMoveSpeed++;
@@ -250,6 +251,7 @@ import { MusicManager } from "./sound.js";
         arrowInfo.visible = false;
         danger.style.opacity = 0.2;
         dangerInfo.visible = false;
+        ArrowSound.play("arrow");
 
         blueCarMoveSpeed += 6;
         treesMoveSpeed += 4;
@@ -308,7 +310,8 @@ import { MusicManager } from "./sound.js";
         musicToggle.children[1].classList.add("visually-hidden");
         musicToggle.children[0].classList.remove("visually-hidden");
       }
-      console.log(MusicManager.pause)
+      console.log(musicToggle.children[1].classList)
+      
     },
   );
 

@@ -160,20 +160,15 @@ body {
 
 .background-sound__btn {
   position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-  top: 350px;
-  right: 75px;
+  width: 5rem;
+  height: 5rem;
+  bottom: 12.5rem;
+  right: 2.8125rem;
   background: none;
   border: none;
   font-size: 36px;
-}
-
-.audio {
-  position: absolute;
-  display: flex;
-  bottom: 10px;
-  left: 10px;
+  z-index: 2;
+  outline: none;
 }
 
 .car__blue {
