@@ -2,7 +2,7 @@ export const CoinSound = {
     sounds: {},
   
     init() {
-      this.sounds.coin = new Audio('https://github.com/Maxim-Belyi/pet_Car-Game/raw/refs/heads/main/media/coin.mp3');
+      this.sounds.coin = new Audio('https://raw.githubusercontent.com/Maxim-Belyi/pet_Car-Game/main/media/coin.mp3');
       this.sounds.coin.volume = 0.4;
     },
   
