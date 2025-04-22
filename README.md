@@ -3,3 +3,5 @@
 <br>
 <br> 
 <h3 align="center">Web game Js/Scss only
+<br>
+<h3 align="center"><srtrong>Arrow</srtrong>keys or <strong>WASD</strong> control
