@@ -1,5 +1,5 @@
 <br>
-<h1  align="center"> 🏎️💨<a href="https://maxim-belyi.github.io/pet_Car-Game/" target="_blank">"Racer JS"</a>
+<h1  align="center"><a href="https://maxim-belyi.github.io/pet_Car-Game/" target="_blank"> 🏎️💨"Racer JS"</a>
 <br>
 <br>
 <h4> ## 🎮 A simple 2D survival racing game written in pure JavaScript, with controls for desktop and mobile devices.
