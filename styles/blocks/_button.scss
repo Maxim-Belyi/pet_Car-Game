@@ -2,12 +2,12 @@
 
 .button {
     &-wrapper {
+        position: absolute;
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
         gap: rem(20);
-        position: fixed;
         top: rem(25);
         right: rem(25);
         z-index: 2;
@@ -28,9 +28,9 @@
           
             &__left {
                 display: flex;
-                position: fixed;
-                bottom: rem(90);
-                left: rem(20);
+                position: absolute;
+                bottom: rem(30);
+                left: rem(30);
                 z-index: 2;
 
                 @include mobile-s {
@@ -44,8 +44,8 @@
 
             &__right {
                 display: flex;
-                position: fixed;
-                bottom: rem(60);
+                position: absolute;
+                bottom: rem(10);
                 right: rem(20);
                 z-index: 2;
 

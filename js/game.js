@@ -35,7 +35,7 @@ import { Sounds } from "./utils/sound.js";
   let isPause = true;
   let animationId = null;
   let score = 0;
-  let blueCarMoveSpeed = 6;
+  let blueCarMoveSpeed = 3;
   let treesMoveSpeed = 7;
   let signsMoveSpeed = 5;
 
@@ -93,7 +93,9 @@ import { Sounds } from "./utils/sound.js";
   function moveUp() {
     blueCarInfo.coords.y -= blueCarMoveSpeed;
     blueCar.style.transform = `translate(${blueCarInfo.coords.x}px, ${blueCarInfo.coords.y}px)`;
-    blueCarInfo.move.up = requestAnimationFrame(moveUp);
+    if (blueCarInfo.coords.y < -(window.innerHeight)) {
+      return;
+    } else { blueCarInfo.move.up = requestAnimationFrame(moveUp); }
   }
 
   function moveDown() {
@@ -215,6 +217,7 @@ import { Sounds } from "./utils/sound.js";
       elementAnimation(danger, dangerInfo, negativeRandom900);
       elementAnimation(coinAlt, coinAltInfo, negativeRandom500);
 
+      console.log(blueCarInfo.coords.y)
       if (Sounds.isPlaying) { Sounds.play("main") };
 
       if (dangerInfo.visible && hasCollision(blueCarInfo, dangerInfo)) {
@@ -275,7 +278,7 @@ import { Sounds } from "./utils/sound.js";
 
   function finishGame() {
     cancelAnimationFrame(animationId);
-     stopCarAnimations();
+    stopCarAnimations();
     backdropEndGame.style.display = "initial";
     const scoreEndGame = backdropEndGame.querySelector('[data-js-end-game-score]');
     scoreEndGame.innerText = score;
@@ -288,7 +291,7 @@ import { Sounds } from "./utils/sound.js";
     isPause = !isPause;
     if (isPause) {
       cancelAnimationFrame(animationId);
-       stopCarAnimations();
+      stopCarAnimations();
       gameButton.children[1].classList.add("visually-hidden");
       gameButton.children[0].classList.remove("visually-hidden");
     } else {

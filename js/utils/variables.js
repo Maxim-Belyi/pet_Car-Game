@@ -8,8 +8,6 @@ export let gameScoreValue = document.querySelector('[data-js-game-score-value]')
 export let backdropEndGame = document.querySelector('[data-js-end-game-backdrop]');
 export const restartButton = document.querySelector('[data-js-end-game-button]');
 
-
-
 export const coinAlt = document.querySelector('[data-js-coin-alt]');
 export const coinAltInfo = createElementInfo(coinAlt);
 export const coin = document.querySelector('[data-js-coin]');

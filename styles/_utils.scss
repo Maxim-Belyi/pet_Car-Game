@@ -1,8 +1,11 @@
 @use './helpers' as *;
+html {
+  overflow: hidden;
+}
 
 body {
   background-color: var(--color-green);
-  overflow: hidden;
+ 
   display: flex;
   justify-content: center;
   font-family: var(--font-family-base);

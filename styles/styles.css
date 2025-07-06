@@ -123,9 +123,12 @@ svg * {
   font-style: normal;
   font-display: swap;
 }
+html {
+  overflow: hidden;
+}
+
 body {
   background-color: var(--color-green);
-  overflow: hidden;
   display: flex;
   justify-content: center;
   font-family: var(--font-family-base);
@@ -280,12 +283,12 @@ body {
 }
 
 .button-wrapper {
+  position: absolute;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
-  position: fixed;
   top: 1.5625rem;
   right: 1.5625rem;
   z-index: 2;
@@ -299,9 +302,9 @@ body {
 }
 .button-controls-wrapper__left {
   display: flex;
-  position: fixed;
-  bottom: 5.625rem;
-  left: 1.25rem;
+  position: absolute;
+  bottom: 1.875rem;
+  left: 1.875rem;
   z-index: 2;
 }
 @media (width <= 33.75rem) {
@@ -316,8 +319,8 @@ body {
 }
 .button-controls-wrapper__right {
   display: flex;
-  position: fixed;
-  bottom: 3.75rem;
+  position: absolute;
+  bottom: 0.625rem;
   right: 1.25rem;
   z-index: 2;
 }
