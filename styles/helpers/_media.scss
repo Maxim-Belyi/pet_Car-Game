@@ -3,7 +3,7 @@
 $laptop: 1440;
 $tablet: 1023;
 $mobile: 767;
-$mobile-s: 480;
+$mobile-s: 540;
 
 @mixin laptop-above {
   @media (width > rem($laptop)) {
@@ -12,7 +12,7 @@ $mobile-s: 480;
 }
 
 @mixin laptop {
-  @media (width <= rem($laptop)) {
+  @media (width <=rem($laptop)) {
     @content;
   }
 }
@@ -24,7 +24,7 @@ $mobile-s: 480;
 }
 
 @mixin tablet {
-  @media (width <= rem($tablet)) {
+  @media (width <=rem($tablet)) {
     @content;
   }
 }
@@ -36,8 +36,13 @@ $mobile-s: 480;
 }
 
 @mixin mobile {
-  @media (width <= rem($mobile)) {
+  @media (width <=rem($mobile)) {
     @content;
   }
 }
 
+@mixin mobile-s {
+  @media (width <=rem($mobile-s)) {
+    @content;
+  }
+}

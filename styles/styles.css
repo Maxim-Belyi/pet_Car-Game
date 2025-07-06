@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :where(ul, ol):where([class]) {
@@ -128,6 +129,8 @@ body {
   display: flex;
   justify-content: center;
   font-family: var(--font-family-base);
+  height: 120vh;
+  width: 100vw;
 }
 
 .container {
@@ -150,6 +153,10 @@ body {
   overflow: hidden !important;
 }
 
+.button {
+  border: none;
+  background: transparent;
+}
 .button:focus {
   outline: none;
 }
@@ -160,10 +167,10 @@ body {
 
 .background-sound__btn {
   position: absolute;
-  width: 5rem;
-  height: 5rem;
-  bottom: 12.5rem;
-  right: 2.8125rem;
+  width: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
+  height: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
+  bottom: 25%;
+  right: 2%;
   background: none;
   border: none;
   font-size: 36px;
@@ -172,9 +179,9 @@ body {
 }
 
 .car__blue {
-  width: clamp(3.75rem, 2.7941176471rem + 3.9215686275vw, 7.5rem);
   position: absolute;
-  transform: translate(28rem, -25vh);
+  width: clamp(1.875rem, 0.4411764706rem + 5.8823529412vw, 7.5rem);
+  transform: translate(310%, -25vh);
 }
 
 .tree {
@@ -182,37 +189,82 @@ body {
   z-index: 1;
 }
 .tree-1, .tree-5 {
-  width: clamp(14.375rem, 11.8259803922rem + 10.4575163399vw, 24.375rem);
+  width: clamp(5.625rem, 0.8455882353rem + 19.6078431373vw, 24.375rem);
 }
 .tree-2, .tree-4 {
-  width: clamp(13.75rem, 11.5196078431rem + 9.1503267974vw, 22.5rem);
+  width: clamp(5rem, 0.5392156863rem + 18.3006535948vw, 22.5rem);
 }
 .tree-3, .tree-6 {
-  width: clamp(15.625rem, 13.3946078431rem + 9.1503267974vw, 24.375rem);
+  width: clamp(5.9375rem, 1.237745098rem + 19.2810457516vw, 24.375rem);
 }
 .tree-1 {
   transform: translateY(-15vh);
   left: 71vw;
 }
+@media (width <= 47.9375rem) {
+  .tree-1 {
+    left: 75vw;
+  }
+}
 .tree-2 {
   transform: translateY(-150vh);
   left: 8vw;
+}
+@media (width <= 47.9375rem) {
+  .tree-2 {
+    left: 4vw;
+  }
+}
+@media (width <= 33.75rem) {
+  .tree-2 {
+    left: 0.5vw;
+  }
 }
 .tree-3 {
   transform: translateY(-45vh);
   left: 7vw;
 }
+@media (width <= 47.9375rem) {
+  .tree-3 {
+    left: 3vw;
+  }
+}
+@media (width <= 33.75rem) {
+  .tree-3 {
+    left: 0.5vw;
+  }
+}
 .tree-4 {
   transform: translateY(-70vh);
   left: 75vw;
+}
+@media (width <= 47.9375rem) {
+  .tree-4 {
+    left: 80vw;
+  }
 }
 .tree-5 {
   transform: translateY(-100vh);
   left: 7vw;
 }
+@media (width <= 47.9375rem) {
+  .tree-5 {
+    left: 3vw;
+  }
+}
+@media (width <= 33.75rem) {
+  .tree-5 {
+    left: 0.5vw;
+  }
+}
 .tree-6 {
   transform: translateY(-145vh);
   left: 72vw;
+}
+@media (width <= 47.9375rem) {
+  .tree-6 {
+    left: 82vw;
+  }
 }
 
 .road {
@@ -220,32 +272,93 @@ body {
   justify-content: center;
   align-items: center;
   margin-inline: auto;
-  width: clamp(12.5rem, 1.3480392157rem + 45.7516339869vw, 56.25rem);
-  height: 100vh;
+  width: clamp(14.375rem, 3.7009803922rem + 43.7908496732vw, 56.25rem);
+  height: 110vh;
   background-color: var(--color-grey-road);
   border-left: var(--border);
   border-right: var(--border);
 }
 
-.game-button {
+.button-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
   position: fixed;
-  bottom: 1.5625rem;
+  top: 1.5625rem;
   right: 1.5625rem;
-  background: transparent;
-  border: none;
-  width: clamp(3.125rem, 2.0098039216rem + 4.5751633987vw, 7.5rem);
   z-index: 2;
+}
+.button__game {
+  width: clamp(3.125rem, 2.3284313725rem + 3.2679738562vw, 6.25rem);
+}
+.button__sound {
+  width: clamp(3.125rem, 2.9656862745rem + 0.6535947712vw, 3.75rem);
+  outline: none;
+}
+.button-controls-wrapper__left {
+  display: flex;
+  position: fixed;
+  bottom: 5.625rem;
+  left: 1.25rem;
+  z-index: 2;
+}
+@media (width <= 33.75rem) {
+  .button-controls-wrapper__left {
+    left: 0.3125rem;
+  }
+}
+@media (pointer: fine) {
+  .button-controls-wrapper__left {
+    display: none;
+  }
+}
+.button-controls-wrapper__right {
+  display: flex;
+  position: fixed;
+  bottom: 3.75rem;
+  right: 1.25rem;
+  z-index: 2;
+}
+@media (width <= 33.75rem) {
+  .button-controls-wrapper__right {
+    right: 0.3125rem;
+  }
+}
+@media (pointer: fine) {
+  .button-controls-wrapper__right {
+    display: none;
+  }
+}
+.button-controls__left, .button-controls__right, .button-controls__down, .button-controls__top {
+  width: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
+}
+.button-controls__top {
+  padding-bottom: 3.75rem;
+}
+.button-controls__left {
+  rotate: -90deg;
+}
+.button-controls__down {
+  rotate: 180deg;
+  padding-bottom: 3.75rem;
+}
+.button-controls__right {
+  rotate: 90deg;
 }
 
 .signs {
   position: absolute;
 }
 .signs__arrow {
-  width: clamp(5rem, 4.362745098rem + 2.614379085vw, 7.5rem);
+  width: clamp(3.125rem, 2.1691176471rem + 3.9215686275vw, 6.875rem);
+  height: auto;
   transform: translate(250px, -195vh);
 }
 .signs__danger {
-  width: clamp(7.5rem, 6.862745098rem + 2.614379085vw, 10rem);
+  width: clamp(3.75rem, 2.7941176471rem + 3.9215686275vw, 7.5rem);
+  height: auto;
   transform: translate(200px, -290vh);
 }
 .signs__coin {
@@ -265,7 +378,7 @@ body {
   top: 10px;
   left: 10px;
   background-color: var(--color-orange);
-  font-size: 22px;
+  font-size: clamp(1rem, 0.9044117647rem + 0.3921568627vw, 1.375rem);
   font-weight: 500;
   border-radius: var(--border-radius);
   z-index: 5;
@@ -273,6 +386,12 @@ body {
 .game-score__title {
   padding: 0.625rem;
   padding-left: 1.25rem;
+}
+@media (width <= 47.9375rem) {
+  .game-score__title {
+    padding: 0.3125rem;
+    padding-left: 0.625rem;
+  }
 }
 .game-score__value {
   padding-right: 1.25rem;
@@ -290,9 +409,16 @@ body {
   background-color: var(--color-white);
   border-radius: var(--border-radius);
 }
+@media (width <= 47.9375rem) {
+  .end-game__wrapper {
+    gap: 0.625rem;
+    padding: 0.9375rem 1.25rem;
+    text-align: center;
+  }
+}
 .end-game__text {
   display: flex;
-  font-size: 1.625rem;
+  font-size: clamp(1.25rem, 1.1544117647rem + 0.3921568627vw, 1.625rem);
   letter-spacing: 1px;
 }
 .end-game__text::after, .end-game__text::before {
@@ -301,6 +427,11 @@ body {
   padding-inline: 1.25rem;
   animation: jump 0.3s ease infinite alternate;
   animation-delay: 0.1s;
+}
+@media (width <= 47.9375rem) {
+  .end-game__text::after, .end-game__text::before {
+    padding-inline: 0.3125rem;
+  }
 }
 @keyframes jump {
   from {

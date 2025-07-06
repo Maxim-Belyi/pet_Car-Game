@@ -6,6 +6,8 @@ body {
   display: flex;
   justify-content: center;
   font-family: var(--font-family-base);
+  height: 120vh;
+  width: 100vw;
 }
 
 .container {
@@ -28,6 +30,8 @@ body {
 }
 
 .button {
+  border: none;
+  background: transparent;
   &:focus {
       outline: none;
   }

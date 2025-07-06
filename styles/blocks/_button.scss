@@ -1,0 +1,86 @@
+@use '../helpers' as *;
+
+.button {
+    &-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: rem(20);
+        position: fixed;
+        top: rem(25);
+        right: rem(25);
+        z-index: 2;
+    }
+
+    &__game {
+        width: fluid(100, 50);
+    }
+
+    &__sound {
+        width: fluid(60, 50);
+        outline: none;
+    }
+
+    &-controls {
+       
+        &-wrapper {
+          
+            &__left {
+                display: flex;
+                position: fixed;
+                bottom: rem(90);
+                left: rem(20);
+                z-index: 2;
+
+                @include mobile-s {
+                    left: rem(5);
+                }
+
+                @media (pointer: fine) {
+                    display: none;
+                }
+            }
+
+            &__right {
+                display: flex;
+                position: fixed;
+                bottom: rem(60);
+                right: rem(20);
+                z-index: 2;
+
+                @include mobile-s {
+                    right: rem(5);
+                }
+
+                @media (pointer: fine) {
+                    display: none;
+                }
+            }
+        }
+
+        &__left,
+        &__right,
+        &__down,
+        &__top {
+            width: fluid(60, 40);
+        }
+
+        &__top {
+            padding-bottom: rem(60);
+        }
+        &__left {
+            rotate: -90deg;
+        }
+
+        &__down {
+            rotate: 180deg;
+            padding-bottom: rem(60);
+        }
+
+        &__right {
+            rotate: 90deg;
+        }
+    }
+
+}

@@ -5,89 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link href="https://github.com/Maxim-Belyi/pet_Car-Game/raw/refs/heads/main/media/coin.mp3" as="audio">
-    <link href="https://github.com/Maxim-Belyi/pet_Car-Game/raw/refs/heads/main/media/background-music.mp3" as="audio">
-    <link href="https://github.com/Maxim-Belyi/pet_Car-Game/raw/refs/heads/main/media/engine-force.mp3" as="audio">
     <title>Car game</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="road">
-            <div class="backdrop end-game">
+        <div class="road" data-js-road>
+
+            <div class="backdrop end-game" data-js-end-game-backdrop>
                 <div class="end-game__wrapper">
                     <div class="end-game__text">
-                        <p>Total score: <span class="end-game__score">0</span></p>
+                        <p>Total score: <span class="end-game__score" data-js-end-game-score>0</span></p>
                     </div>
-                    <button class="button end-game__button" type="button">Restart</button>
+                    <button class="button end-game__button" type="button" data-js-end-game-button>Restart</button>
                 </div>
             </div>
         </div>
-        <div class="car car__blue">
+
+        <div class="car car__blue" data-js-car>
             <img src="./images/car.png" alt="">
         </div>
 
-        <div class="tree tree-1">
+        <div class="tree tree-1" data-js-tree>
             <img src="./images/tree1.png" alt="">
         </div>
 
-        <div class="tree tree-2">
+        <div class="tree tree-2" data-js-tree>
             <img src="./images/tree2.png" alt="">
         </div>
 
-        <div class="tree tree-3">
+        <div class="tree tree-3" data-js-tree>
             <img src="./images/tree3.png" alt="">
         </div>
 
-        <div class="tree tree-4">
+        <div class="tree tree-4" data-js-tree>
             <img src="./images/tree2.png" alt="">
         </div>
 
-        <div class="tree tree-5">
+        <div class="tree tree-5" data-js-tree>
             <img src="./images/tree1.png" alt="">
         </div>
 
-        <div class="tree tree-6">
+        <div class="tree tree-6" data-js-tree>
             <img src="./images/tree3.png" alt="">
         </div>
 
-        <div class="signs signs__arrow arrow">
+        <div class="signs signs__arrow arrow" data-js-arrow>
             <img src="./images/arrow.png" alt="">
         </div>
 
-        <div class="signs signs__danger danger">
+        <div class="signs signs__danger danger" data-js-danger>
             <img src="./images/danger.png" alt="">
         </div>
 
-        <div class="signs signs__coin coin">
+        <div class="signs signs__coin coin" data-js-coin>
             <img src="./images/coin.png" alt="">
         </div>
 
-        <div class="signs signs__coin-alt coin-alt">
+        <div class="signs signs__coin-alt coin-alt" data-js-coin-alt>
             <img src="./images/coin.png" alt="">
         </div>
 
-        <div class="game-score">
+        <div class="game-score" data-js-game-score-wrapper>
             <p class="game-score__title">Your score:</p>
-            <p class="game-score__value">0</p>
+            <p class="game-score__value" data-js-game-score-value>0</p>
         </div>
 
-        <button class="button game-button" type="button">
-            <img class="game-button__pause" src="./images/pause.png" alt="">
-            <img class="start-button__play visually-hidden" src="./images/play.png" alt="">
-        </button>
+        <div class="button-wrapper">
+            <button class="button button__game" type="button" data-js-start-game-button>
+                <img class="button__pause" src="./images/pause.png" alt="">
+                <img class="button__play visually-hidden" src="./images/play.png" alt="">
+            </button>
 
-        <button class="background-sound__btn">
-            <span class="background__sound-on">🔊</span>
-            <span class="background__sound-off visually-hidden">🔇</span>
-        </button>
+            <button class="button__sound button" data-js-sound-button>
+                <img class="button__sound-on" src="./images/sound-on.png"></img>
+                <img class="button__sound-off visually-hidden" src="./images/sound-off.png"></img>
+            </button>
+        </div>
+
+        <div class="button-controls-wrapper__left">
+            <button class="button-controls__left button" data-js-left-control>
+                <img src="./images/arrow-button.avif" alt="" width="48" height="48">
+            </button>
+
+            <button class="button-controls__down button" data-js-down-control>
+                <img src="./images/arrow-button.avif" alt="" width="48" height="48">
+            </button>
+        </div>
+
+        <div class="button-controls-wrapper__right">
+            <button class="button-controls__top button" data-js-top-control>
+                <img src="./images/arrow-button.avif" alt=""  width="48" height="48">
+            </button>
+
+            <button class="button-controls__right button" data-js-right-control>
+                <img src="./images/arrow-button.avif" alt=""  width="48" height="48">
+            </button>
+        </div>
+
     </div>
 </body>
 
-<script src="js/utils/create-element-info.js"></script>
-<script src="js/utils/get-coords.js"></script>
-<script src="js/utils/has-collision.js"></script>
 <script type="module" src="js/game.js"></script>
-
-
 </html>

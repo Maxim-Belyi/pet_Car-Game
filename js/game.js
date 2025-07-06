@@ -1,20 +1,44 @@
-import { CoinSound } from "./sound.js";
-import { ArrowSound } from "./sound.js";
-import { MusicManager } from "./sound.js";
+import {
+  blueCar,
+  arrow,
+  arrowInfo,
+  gameScoreWrapper,
+  gameScoreValue,
+  backdropEndGame,
+  restartButton,
+  trees,
+  coin,
+  coinAlt,
+  coinInfo,
+  coinAltInfo,
+  controlLeft,
+  controlDown,
+  controlTop,
+  controlRight,
+  roadWidth,
+  negativeRandom100,
+  negativeRandom500,
+  negativeRandom900,
+  treesCoords,
+} from "./utils/variables.js";
+
+import { hasCollision } from "./utils/has-collision.js";
+import { createElementInfo } from "./utils/create-elem-info.js";
+import { getCoords } from "./utils/get-coords.js";
+import { Sounds } from "./utils/sound.js";
+
 
 (function () {
+  const danger = document.querySelector('[data-js-danger]');
+  const dangerInfo = createElementInfo(danger);
+
   let isPause = true;
   let animationId = null;
-
   let score = 0;
   let blueCarMoveSpeed = 6;
   let treesMoveSpeed = 7;
   let signsMoveSpeed = 5;
 
-  const trees = document.querySelectorAll(".tree");
-  const road = document.querySelector(".road");
-
-  const blueCar = document.querySelector(".car__blue");
   const blueCarInfo = {
     ...createElementInfo(blueCar),
     moveSpeed: blueCarMoveSpeed,
@@ -26,34 +50,6 @@ import { MusicManager } from "./sound.js";
       right: null,
     },
   };
-
-  const coinAlt = document.querySelector(".coin-alt");
-  const coinAltInfo = createElementInfo(coinAlt);
-   
-  const coin = document.querySelector(".coin");
-  const coinInfo = createElementInfo(coin);
-
-  const danger = document.querySelector(".danger");
-  const dangerInfo = createElementInfo(danger);
-
-  const arrow = document.querySelector(".arrow");
-  const arrowInfo = createElementInfo(arrow);
-
-  let gameScoreWrapper = document.querySelector(".game-score");
-  let gameScoreValue = document.querySelector(".game-score__value");
-  let backdropEndGame = document.querySelector(".end-game");
-  const restartButton = document.querySelector(".end-game__button");
-
-  const roadWidth = road.clientWidth;
-
-  let negativeRandom100 =
-    -window.innerHeight - Math.floor(Math.random() * (500 - 100) + 100);
-  let negativeRandom500 =
-    -window.innerHeight - Math.floor(Math.random() * (900 - 500) + 500);
-  let negativeRandom900 =
-    -window.innerHeight - Math.floor(Math.random() * (1200 - 900) + 900);
-
-  const treesCoords = [];
 
   for (let i = 0; i < trees.length; i++) {
     const tree = trees[i];
@@ -69,6 +65,30 @@ import { MusicManager } from "./sound.js";
       blueCarInfo.move[key] = null;
     });
   }
+
+  document.addEventListener("keydown", (event) => {
+    if (isPause) {
+      return;
+    }
+    switch (event.code) {
+      case 'ArrowUp': case 'KeyW': startMove('up'); break;
+      case 'ArrowDown': case 'KeyS': startMove('down'); break;
+      case 'ArrowLeft': case 'KeyA': startMove('left'); break;
+      case 'ArrowRight': case 'KeyD': startMove('right'); break;
+    }
+  });
+
+  document.addEventListener("keyup", (event) => {
+    if (isPause) {
+      return;
+    }
+    switch (event.code) {
+      case 'ArrowUp': case 'KeyW': stopMove('up'); break;
+      case 'ArrowDown': case 'KeyS': stopMove('down'); break;
+      case 'ArrowLeft': case 'KeyA': stopMove('left'); break;
+      case 'ArrowRight': case 'KeyD': stopMove('right'); break;
+    }
+  });
 
   function moveUp() {
     blueCarInfo.coords.y -= blueCarMoveSpeed;
@@ -108,81 +128,48 @@ import { MusicManager } from "./sound.js";
     blueCarInfo.move.right = requestAnimationFrame(moveRight);
   }
 
-  document.addEventListener("keydown", (event) => {
+  function startMove(direction) {
     if (isPause) {
       return;
     }
 
-    switch (event.code) {
-      case "ArrowUp":
-      case "KeyW":
-        if (!blueCarInfo.move.up) {
-          stopCarAnimations();
-          blueCarInfo.move.up = requestAnimationFrame(moveUp);
-        }
-        break;
+    const moveTouchFunction = {
+      up: moveUp,
+      down: moveDown,
+      left: moveLeft,
+      right: moveRight,
+    };
 
-      case "ArrowDown":
-      case "KeyS":
-        if (!blueCarInfo.move.down) {
-          stopCarAnimations();
-          blueCarInfo.move.down = requestAnimationFrame(moveDown);
-        }
-        break;
-
-      case "ArrowLeft":
-      case "KeyA":
-        if (!blueCarInfo.move.left) {
-          stopCarAnimations();
-          blueCarInfo.move.left = requestAnimationFrame(moveLeft);
-        }
-        break;
-
-      case "ArrowRight":
-      case "KeyD":
-        if (!blueCarInfo.move.right) {
-          stopCarAnimations();
-          blueCarInfo.move.right = requestAnimationFrame(moveRight);
-        }
-        break;
+    if (!blueCarInfo.move[direction]) {
+      stopCarAnimations();
+      blueCarInfo.move[direction] = requestAnimationFrame(moveTouchFunction[direction]);
     }
-  });
+  }
 
-  document.addEventListener("keyup", (event) => {
-    switch (event.code) {
-      case "ArrowUp":
-      case "KeyW":
-        if (blueCarInfo.move.up) {
-          cancelAnimationFrame(blueCarInfo.move.up);
-          blueCarInfo.move.up = null;
-        }
-        break;
-
-      case "ArrowDown":
-      case "KeyS":
-        if (blueCarInfo.move.down) {
-          cancelAnimationFrame(blueCarInfo.move.down);
-          blueCarInfo.move.down = null;
-        }
-        break;
-
-      case "ArrowLeft":
-      case "KeyA":
-        if (blueCarInfo.move.left) {
-          cancelAnimationFrame(blueCarInfo.move.left);
-          blueCarInfo.move.left = null;
-        }
-        break;
-
-      case "ArrowRight":
-      case "KeyD":
-        if (blueCarInfo.move.right) {
-          cancelAnimationFrame(blueCarInfo.move.right);
-          blueCarInfo.move.right = null;
-        }
-        break;
+  function stopMove(direction) {
+    if (blueCarInfo.move[direction]) {
+      cancelAnimationFrame(blueCarInfo.move[direction]);
+      blueCarInfo.move[direction] = null;
     }
-  });
+  }
+
+  const controls = [
+    { button: controlTop, direction: 'up' },
+    { button: controlRight, direction: 'right' },
+    { button: controlDown, direction: 'down' },
+    { button: controlLeft, direction: 'left' },
+  ]
+
+  controls.forEach(({ button, direction }) => {
+    button.addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      startMove(direction);
+    });
+
+    button.addEventListener('touchend', () => {
+      stopMove(direction);
+    })
+  })
 
   function treesAnimation() {
     for (let i = 0; i < trees.length; i++) {
@@ -228,6 +215,8 @@ import { MusicManager } from "./sound.js";
       elementAnimation(danger, dangerInfo, negativeRandom900);
       elementAnimation(coinAlt, coinAltInfo, negativeRandom500);
 
+      if (Sounds.isPlaying) { Sounds.play("main") };
+
       if (dangerInfo.visible && hasCollision(blueCarInfo, dangerInfo)) {
         finishGame();
         return;
@@ -238,7 +227,8 @@ import { MusicManager } from "./sound.js";
         gameScoreValue.innerText = score;
         coin.style.display = "none";
         coinInfo.visible = false;
-        CoinSound.play("coin");
+
+        if (Sounds.isPlaying) { Sounds.play("coin"); }
 
         if (score % 3 === 0) {
           blueCarMoveSpeed++;
@@ -248,11 +238,12 @@ import { MusicManager } from "./sound.js";
       }
 
       if (coinAltInfo.visible && hasCollision(blueCarInfo, coinAltInfo)) {
-        score ++;
+        score++;
         gameScoreValue.innerText = score;
         coinAlt.style.display = "none";
         coinAltInfo.visible = false;
-        CoinSound.play("coin");
+
+        if (Sounds.isPlaying) { Sounds.play("coin"); }
       }
 
       if (arrowInfo.visible && hasCollision(blueCarInfo, arrowInfo)) {
@@ -260,7 +251,7 @@ import { MusicManager } from "./sound.js";
         arrowInfo.visible = false;
         danger.style.opacity = 0.2;
         dangerInfo.visible = false;
-        ArrowSound.play("arrow");
+        if (Sounds.isPlaying) { Sounds.play("arrow") };
 
         blueCarMoveSpeed += 7;
         treesMoveSpeed += 5;
@@ -278,27 +269,26 @@ import { MusicManager } from "./sound.js";
           }, 1000);
         }, 2000);
       }
-
       animationId = requestAnimationFrame(startGame);
     }
   }
 
   function finishGame() {
     cancelAnimationFrame(animationId);
-    stopCarAnimations();
+     stopCarAnimations();
     backdropEndGame.style.display = "initial";
-    const scoreEndGame = backdropEndGame.querySelector(".end-game__score");
+    const scoreEndGame = backdropEndGame.querySelector('[data-js-end-game-score]');
     scoreEndGame.innerText = score;
     gameScoreWrapper.style.display = "none";
     gameButton.style.display = "none";
   }
 
-  const gameButton = document.querySelector(".game-button");
+  const gameButton = document.querySelector('[data-js-start-game-button]');
   gameButton.addEventListener("click", () => {
     isPause = !isPause;
     if (isPause) {
       cancelAnimationFrame(animationId);
-      stopCarAnimations();
+       stopCarAnimations();
       gameButton.children[1].classList.add("visually-hidden");
       gameButton.children[0].classList.remove("visually-hidden");
     } else {
@@ -308,10 +298,10 @@ import { MusicManager } from "./sound.js";
     }
   });
 
-  const musicToggle = document.querySelector(".background-sound__btn");
+  const musicToggle = document.querySelector('[data-js-sound-button]');
 
   musicToggle.addEventListener("click", () => {
-    MusicManager.toggle();
+    Sounds.toggleMute();
 
     musicToggle.children[0].classList.toggle("visually-hidden");
     musicToggle.children[1].classList.toggle("visually-hidden");

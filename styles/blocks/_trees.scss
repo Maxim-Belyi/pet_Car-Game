@@ -2,51 +2,88 @@
 
 .tree {
     position: absolute;
-           z-index: 1;
-      
+    z-index: 1;
 
     &-1,
     &-5 {
-        width: fluid(390, 230);
+        width: fluid(390, 90);
     }
 
     &-2,
     &-4 {
-        width: fluid(360, 220);
+        width: fluid(360, 80);
     }
 
     &-3,
     &-6 {
-        width: fluid(390, 250);
+        width: fluid(390, 95);
     }
 
     &-1 {
-       transform: translateY(-15vh);
-       left: 71vw;
+        transform: translateY(-15vh);
+        left: 71vw;
+
+        @include mobile {
+            left: 75vw;
+        }
     }
 
     &-2 {
-      transform: translateY(-150vh);
-      left: 8vw;
-     }
+        transform: translateY(-150vh);
+        left: 8vw;
 
-     &-3 {
-      transform: translateY(-45vh);
-      left: 7vw;
-     }
+        @include mobile {
+            left: 4vw;
+        }
 
-     &-4 {
-      transform: translateY(-70vh);
-      left: 75vw;   
-     }
+        @include mobile-s {
+            left: 0.5vw;
+        }
+    }
 
-     &-5 {
-      transform: translateY(-100vh);
-      left: 7vw; 
-     }
+    &-3 {
+        transform: translateY(-45vh);
+        left: 7vw;
 
-     &-6 {
-      transform: translateY(-145vh);
-      left: 72vw;
-     }
+        @include mobile {
+            left: 3vw;
+        }
+
+        @include mobile-s {
+            left: 0.5vw;
+        }
+    }
+
+    &-4 {
+        transform: translateY(-70vh);
+        left: 75vw;
+
+        @include mobile {
+            left: 80vw;
+        }
+    }
+
+    &-5 {
+        transform: translateY(-100vh);
+        left: 7vw;
+
+        @include mobile {
+            left: 3vw;
+        }
+
+        @include mobile-s {
+            left: 0.5vw;
+        }
+    }
+
+    &-6 {
+        transform: translateY(-145vh);
+        left: 72vw;
+
+        @include mobile {
+            left: 82vw;
+        }
+    }
+
+
 }

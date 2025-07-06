@@ -1,4 +1,4 @@
-function getCoords(element) {
+ export function getCoords(element) {
     const matrix = window.getComputedStyle(element).transform;
     const array = matrix.split(",");
     const y = array[array.length - 1];

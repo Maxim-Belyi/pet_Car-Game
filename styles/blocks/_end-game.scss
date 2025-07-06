@@ -8,25 +8,35 @@
     &__wrapper {
 
         display: flex;
-        gap: #{rem(30)};
+        gap: rem(30);
         flex-direction: column;
-        padding: #{rem(30)} #{rem(40)};
+        padding: rem(30) rem(40);
         background-color: var(--color-white);
         border-radius: var(--border-radius);
+
+        @include mobile {
+          gap: rem(10);
+          padding: rem(15) rem(20);
+          text-align: center;
+        }
     }
 
     &__text {
         display: flex;
-        font-size: #{rem(26)};
+        font-size: fluid(26, 20);
         letter-spacing: 1px;
 
         &::after,
         &::before {
             content: '\1f60e';
             display: block;
-            padding-inline: #{rem(20)};
+            padding-inline: rem(20);
             animation: jump 0.3s ease infinite alternate;
             animation-delay: 0.1s;
+
+            @include mobile {
+              padding-inline: rem(5);
+            }
         }
 
         @keyframes jump {
@@ -41,7 +51,7 @@
 
     &__button {
         text-transform: uppercase;
-        font-size: #{rem(22)};
+        font-size: rem(22);
         border-radius: var(--border-radius);
         color: var(--color-white);
         background-color: var(--color-purple);
