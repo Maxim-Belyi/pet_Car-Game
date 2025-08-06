@@ -1,4 +1,4 @@
-<br>
+
 <h1> <a href="https://maxim-belyi.github.io/pet_Car-Game/" target="_blank">
 🏎️💨 Racer JS: Survival Racing </a> </h1>
 <br>
